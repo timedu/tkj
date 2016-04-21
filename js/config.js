@@ -35,7 +35,8 @@ $(function() {
     sortDateOrder: true,
 
     // Posts on Frontpage (blog style)
-    postsOnFrontpage: true,
+//    postsOnFrontpage: true,
+    postsOnFrontpage: false,
 
     // Page as Frontpage (static)
     pageAsFrontpage: '',
