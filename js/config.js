@@ -46,7 +46,7 @@ $(function() {
     postsOnUrl: '',
 
     // Site fade speed
-    fadeSpeed: 300,
+    fadeSpeed: 50,
 
     // Site footer text
     //footerText: '&copy; ' + new Date().getFullYear() + ' All Rights Reserved.',
