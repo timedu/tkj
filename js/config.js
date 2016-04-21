@@ -8,7 +8,7 @@ $(function() {
 
     // Tagline for your site
 //    siteTagline: 'Your site tagline',
-    siteTagline: 'tietoKantaJärjestelmät',
+    siteTagline: 'tietoKantaJarjestelmat',
 
     // Email address
     siteEmail: 'your_email@example.com',
@@ -39,7 +39,8 @@ $(function() {
     postsOnFrontpage: false,
 
     // Page as Frontpage (static)
-    pageAsFrontpage: '',
+//    pageAsFrontpage: '',
+    pageAsFrontpage: 'about',
 
     // Posts/Blog on different URL
     postsOnUrl: '',
