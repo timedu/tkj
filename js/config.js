@@ -4,11 +4,11 @@ $(function() {
 
     // Name of your site or location of logo file, relative to root directory (img/logo.png)
 //    siteName: 'My Site',
-    siteName: 'TKJ',
+    siteName: 'tkj2016k',
 
     // Tagline for your site
 //    siteTagline: 'Your site tagline',
-    siteTagline: 'Tietokantajärjestelmät (2016k)',
+    siteTagline: 'tietoKantaJärjestelmät',
 
     // Email address
     siteEmail: 'your_email@example.com',
@@ -48,7 +48,7 @@ $(function() {
 
     // Site footer text
     //footerText: '&copy; ' + new Date().getFullYear() + ' All Rights Reserved.',
-    footerText: 'pori.tut.fi / TiM',
+    footerText: new Date().getFullYear() + ' TiM',
 
     // Mode 'Github' for Github Pages, 'Server' for Self Hosted. Defaults
     // to Github
