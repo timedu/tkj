@@ -23,7 +23,8 @@ $(function() {
     ],
 
     // Posts folder name
-    postsFolder: 'posts',
+//    postsFolder: 'posts',
+    postsFolder: '',
 
     // Homepage posts snippet length
     postSnippetLength: 120,
@@ -50,7 +51,7 @@ $(function() {
 
     // Site footer text
     //footerText: '&copy; ' + new Date().getFullYear() + ' All Rights Reserved.',
-    footerText: new Date().getFullYear() + ' TiM',
+    footerText: new Date().getFullYear() + '/TiM',
 
     // Mode 'Github' for Github Pages, 'Server' for Self Hosted. Defaults
     // to Github
