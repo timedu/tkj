@@ -3,10 +3,12 @@ $(function() {
   CMS.init({
 
     // Name of your site or location of logo file, relative to root directory (img/logo.png)
-    siteName: 'My Site',
+//    siteName: 'My Site',
+    siteName: 'TKJ',
 
     // Tagline for your site
-    siteTagline: 'Your site tagline',
+//    siteTagline: 'Your site tagline',
+    siteTagline: 'Tietokantajärjestelmät (2016k)',
 
     // Email address
     siteEmail: 'your_email@example.com',
@@ -16,8 +18,8 @@ $(function() {
 
     // Navigation items
     siteNavItems: [
-      { name: 'Github', href: 'https://github.com/yourname', newWindow: false},
-      { name: 'About'}
+//      { name: 'Github', href: 'https://github.com/yourname', newWindow: false},
+//      { name: 'About'}
     ],
 
     // Posts folder name
@@ -46,7 +48,7 @@ $(function() {
 
     // Site footer text
     //footerText: '&copy; ' + new Date().getFullYear() + ' All Rights Reserved.',
-    footerText: 'TiM @pori.tut.fi',
+    footerText: 'pori.tut.fi / TiM',
 
     // Mode 'Github' for Github Pages, 'Server' for Self Hosted. Defaults
     // to Github
