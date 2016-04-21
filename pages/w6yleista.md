@@ -30,5 +30,5 @@ ja toinen selaimen kautta käytettävä web-sovellus
 
 ## Tietokannan perustaminen
 
-Tehtävissä käytettävät tietokannat, `kurssit_1` ja `kurssit_2` voi perustaa esim. Studion login -ikkunan kautta (*New DB* -painonappi). Tietokantojen rakenteen ja sisällön määrittelevät komentotiedostot löytyvät tehtäväpohjasta.
+Tehtävissä käytettävät tietokannat, `kurssit_1` ja `kurssit_2` voi perustaa esim. Studion login -ikkunan kautta (*New DB* -painonappi). Tietokantojen rakenteen ja sisällön määrittelevät komentotiedostot löytyvät tehtäväpohjasta. Ne voidaan suorittaa kopioimalla tiedostojen sisältö konsolin kehote -merkin perään. 
 
