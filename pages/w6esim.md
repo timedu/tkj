@@ -46,7 +46,7 @@ WHERE  city.name = 'Rome'
 ORDER BY name
 ~~~
 
-Kysely kohdistuu `Employee`-luokan dokumentteihin. `SELECT`-osassa oleva `@rid` ("record id") viittaa dokumentin tietokantatunnisteeseen, jolle kyselyssä määritellään (viitattava) nimi `id`. `WHERE` -osassa olevassa ehtolauseessa käytetään dokumentin `city`-ominaisuuttta, joka on linkki toiseen dokumenttiin. Linkatun dokumentin `name`-ominaisuuttta käytetään kyselyehdossa ilman erillistä liitos -operaatiota, mitä relaatiomalli edellyttää vastaavissa tilanteissa.
+Kysely kohdistuu `Employee`-luokan dokumentteihin. `SELECT`-osassa oleva `@rid` ("record id") viittaa dokumentin tietokantatunnisteeseen, jolle kyselyssä määritellään (viitattava) nimi `id`. `WHERE` -osassa olevassa ehtolauseessa käytetään dokumentin `city`-ominaisuuttta, joka on linkki toiseen dokumenttiin. Linkatun dokumentin `name`-ominaisuuttta käytetään kyselyehdossa ilman erillistä liitos -operaatiota, mitä relaatiomalli edellyttää vastaavissa tilanteissa. Myös komennon `SELECT`-osassa voidaan viitata linkattujen dokumenttien ominaisuuksiin.
 
 PHP-ohjelmassa edellinen kysely voidaan toteuttaa seuraavasti:
 
@@ -63,7 +63,38 @@ $employees = $client->query(''
  
 Kysely palauttaa `$employees`-muuttujaan `Record`-olioita sisältävän taulukon. `Record` sisältää metodeja, joita käyttäen esim. twig-template osaa poimia tarvitsemansa tiedot.
 
+Dokumentti voidaan hakea tietokannasta tietokantatunnuksella seuraavasti:
 
+~~~
+$id = '#2:34'
+$employee = $client->query(''
+      . ' SELECT   name, job, @rid AS id, city.name AS city_name'
+      . ' FROM     Employee'
+      . " WHERE    @rid = $id"
+)[0];
+
+~~~
+
+Tämäkin kysely palauttaa taulukon, mutta sen sisältönä on ainoastaan yksi `Record`-luokan olio,  joka voidaan poimia taulukosta indeksillä `0`.
+
+Yksittäinen ominaisuus saadaan oliosta viittaamalla kyselyn `SELECT`-osan tunnisteita vastaaviin attribuutteihin, esim. `$employee->name`. Ominaisuuksien nimillä indeksoitu taulukko voidaan täten muodostaa seuraavasti:
+
+~~~
+$emp = [
+	"name": $employee->name,
+	"job": $employee->job, 
+	"id": $employee->id,
+ 	"city_name": $employee->city_name
+];
+
+~~~
+
+Edellinen hoituu myös yhdellä sijoituslauseella:
+
+~~~
+$emp = $employee->getOData();
+~~~
+ 
 
 ## Lisäys 
 
