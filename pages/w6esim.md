@@ -127,7 +127,7 @@ CONTENT {"name": "Jay", "surname": "Miner"}
 ~~~
 
 
-PHP -ohjelmassa edellisen komennon toteuttaa esim. seuraavasti:
+PHP -ohjelmassa edellisen komennon voi toteuttaa esim. seuraavasti:
 
 ~~~
 $person = $client->command(''
@@ -140,7 +140,7 @@ $person = $client->command(''
 
 ~~~
 
-Edellä PHP:n `json_encode`-funktiolla muunnetaan taulukko json -merkkijonoksi. `command`-metodi palauttaa tietokantaa talletetun tietueen (`Record`-olio).
+Edellä PHP:n `json_encode`-funktiolla muunnetaan taulukko json -merkkijonoksi. `command`-metodi palauttaa tietokantaan talletetun tietueen (`Record`-olio).
 
 Graafin kaari voidaan lisätä seuraavasti:
 
