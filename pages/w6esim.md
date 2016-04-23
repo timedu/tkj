@@ -51,7 +51,7 @@ Kysely kohdistuu `Employee`-luokan dokumentteihin. `SELECT`-osassa oleva `@rid` 
 PHP-ohjelmassa edellinen kysely voidaan toteuttaa seuraavasti:
 
 ~~~
-$city = 'Rome'
+$city = 'Rome';
 $employees = $client->query(''
       . ' SELECT   name, job, @rid AS id'
       . ' FROM     Employee'
@@ -66,7 +66,7 @@ Kysely palauttaa `$employees`-muuttujaan `Record`-olioita sisältävän taulukon
 Dokumentti voidaan hakea tietokannasta tietokantatunnuksella seuraavasti:
 
 ~~~
-$id = '#2:34'
+$id = '#2:34';
 $employee = $client->query(''
       . ' SELECT   name, job, @rid AS id, city.name AS city_name'
       . ' FROM     Employee'
@@ -81,10 +81,10 @@ Yksittäinen ominaisuus saadaan oliosta viittaamalla kyselyn `SELECT`-osan tunni
 
 ~~~
 $emp = [
-	"name": $employee->name,
-	"job": $employee->job, 
-	"id": $employee->id,
- 	"city_name": $employee->city_name
+	"name" => $employee->name,
+	"job" => $employee->job, 
+	"id" => $employee->id,
+ 	"city_name" => $employee->city_name
 ];
 
 ~~~
