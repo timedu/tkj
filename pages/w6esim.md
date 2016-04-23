@@ -37,7 +37,9 @@ $client->connect();
 
 ## Kyselyt
 
-Tietokantaan voidaan kohdistaa yksinkertaisia kysely -operaatioita perinteisen SQL:n tapaan, esim:
+Tietokantaan voidaan kohdistaa yksinkertaisia kysely -operaatioita perinteisen SQL:n tapaan 
+[SELECT](http://orientdb.com/docs/last/SQL-Query.html)-komennolla, 
+esim:
 
 ~~~
 SELECT name, job, @rid AS id
@@ -98,16 +100,80 @@ $emp = $employee->getOData();
 
 ## Lisäys 
 
-...
+Tietueen lisäys voidaan suorittaa
+[INSERT](http://orientdb.com/docs/last/SQL-Insert.html)-komennolla. Jos tietue on gaafin solmu, voidaan käyttää myös komentoa
+[CREATE VERTEX](http://orientdb.com/docs/last/SQL-Create-Vertex.html). Kaarien lisäykseen on käytettävissä komento 
+[CREATE EDGE](http://orientdb.com/docs/last/SQL-Create-Edge.html).
+
+Lisäys voidaan toteutta perinteisen SQL:n tapaan:
+
+~~~
+INSERT INTO Person (name, surname) 
+VALUES ('Jay', 'Miner')
+~~~
+
+Edellisen sijaan voidaan käyttää myös seuraavaa muotoa:
+
+~~~
+INSERT INTO Person 
+CONTENT {"name": "Jay", "surname": "Miner"}
+~~~
+
+Jälkimmäistä muotoa voidaan käyttää myös lisättäessä graafien solmuja (`Person` on tällöin `V`-luokan aliluokka):
+
+~~~
+CREATE VERTEX  Person 
+CONTENT {"name": "Jay", "surname": "Miner"}
+~~~
+
+
+PHP -ohjelmassa edellisen komennon toteuttaa esim. seuraavasti:
+
+~~~
+$person = $client->command(''
+      . 'CREATE VERTEX Person CONTENT '
+      . json_encode([
+              'name' => "Jay",
+              'surname' => "Miner"
+       ])
+);
+
+~~~
+
+Edellä PHP:n `json_encode`-funktiolla muunnetaan taulukko json -merkkijonoksi. `command`-metodi palauttaa tietokantaa talletetun tietueen (`Record`-olio).
+
+Graafin kaari voidaan lisätä seuraavasti:
+
+~~~
+CREATE EDGE Watched FROM #10:3 TO #11:4
+~~~
+
+Vastaava komento PHP -ohjelmassa voi olla esim. seuraava:
+
+~~~
+$client->command(''
+       . 'CREATE EDGE Watched '
+       . "FROM {$person->getRid()} "
+       . "TO {$movie->getRid()} ");
+~~~
+
 
 ## Muutos
 
-...
+Ks. [UPDATE](http://orientdb.com/docs/last/SQL-Update.html).
+
+UPDATE-komento voidaan suoritaa PHP-ohjelmassa INSERT-komennon tapaan tietokanta-asiakkaan `command`-metodilla. 
 
 
 ## Poisto
 
-...
+Ks. 
+[DELETE](http://orientdb.com/docs/last/SQL-Delete.html), 
+[DELETE VERTEX](http://orientdb.com/docs/last/SQL-Delete-Vertex.html),
+[DELETE EDGE](http://orientdb.com/docs/last/SQL-Delete-Edge.html).
+
+DELETE-komennot voidaan suoritaa PHP-ohjelmassa INSERT-komennon tapaan tietokanta-asiakkaan `command`-metodilla. 
+
 
 ## Transaktiot
 
