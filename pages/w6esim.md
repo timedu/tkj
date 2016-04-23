@@ -177,7 +177,16 @@ DELETE-komennot voidaan suoritaa PHP-ohjelmassa INSERT-komennon tapaan tietokant
 
 ## Transaktiot
 
-...
+Yhteenkuuluvat tietokantakomennot voidaan suorittaa nippuna esim. tietokanta-asiakkaan `sqlBatch`-metodilla:
 
+~~~
+$cmd = 'BEGIN;' .
+       'LET a = CREATE VERTEX SET script = TRUE;' .
+       'LET b = SELECT FROM V LIMIT 1;' .
+       'CREATE EDGE FROM $a TO $b;' .
+       'COMMIT;';
+
+$client->sqlBatch( $cmd );
+~~~
 
 
